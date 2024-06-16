@@ -1,0 +1,8 @@
+name: Astatine-ShulkerRoom
+version: 1.0
+author: ernest
+api-version: 1.18
+main: net.ernest.shulkerroom.Main
+commands:
+  shulkerroom:
+    aliases: sr

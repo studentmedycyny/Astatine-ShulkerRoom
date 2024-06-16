@@ -1,0 +1,20 @@
+# ---------------------------------------------------
+# Spis uprawnień:
+# - astatine.shulkerroom - uprawnienia do wszystkiego
+# ---------------------------------------------------
+
+configuration:
+  allowed-commands:
+    - "/shulkeroom"
+    - "/msg"
+    - "/r"
+    - "/reply"
+    - "/helpop"
+    - "/ignore"
+  spawn-location:
+    x: 0
+    y: 100
+    z: 0
+    yaw: 90
+    pitch: 0
+    world: world
