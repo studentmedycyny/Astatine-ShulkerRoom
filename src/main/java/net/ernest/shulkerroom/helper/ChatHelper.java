@@ -2,6 +2,7 @@ package net.ernest.shulkerroom.helper;
 
 import net.md_5.bungee.api.ChatColor;
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.command.CommandSender;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -27,5 +28,8 @@ public class ChatHelper {
             matcher = pattern.matcher(message);
         }
         return ChatColor.translateAlternateColorCodes('&', StringUtils.replaceEach(message, TO_REPLACE, REPLACED));
+    }
+    public static void sendMessage(CommandSender sender, String message){
+        sender.sendMessage(fixColors(message));
     }
 }

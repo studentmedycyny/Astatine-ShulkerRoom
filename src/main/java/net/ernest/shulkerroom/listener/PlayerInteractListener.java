@@ -26,15 +26,13 @@ public class PlayerInteractListener implements Listener {
         if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Block block = event.getClickedBlock();
         if(block == null) return;
-        Location blockLocation = block.getLocation();
         ShulkerRoomFactory shulkerRoomFactory = this.plugin.getShulkerRoomFactory();
         if(shulkerRoomFactory.isPlayerInRoom(player)){
-            ShulkerRoom room =  this.plugin.getShulkerRoomFactory().findRoomByUniqueId(player.getUniqueId());
+            ShulkerRoom room =  shulkerRoomFactory.findRoomByUniqueId(player.getUniqueId());
             Location roomExit = room.getExit();
-            if(roomExit.getX() == blockLocation.getX()
-            && roomExit.getY() == blockLocation.getY()
-            && roomExit.getZ() == blockLocation.getZ()) {
-                this.plugin.getShulkerRoomFactory().unclaimRoom(player);
+            Location blockLocation = block.getLocation();
+            if(roomExit.equals(blockLocation)) {
+                shulkerRoomFactory.unclaimRoom(player);
             }
         }
     }

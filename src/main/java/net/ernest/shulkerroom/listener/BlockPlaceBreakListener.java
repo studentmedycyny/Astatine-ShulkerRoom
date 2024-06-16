@@ -20,26 +20,24 @@ public class BlockPlaceBreakListener implements Listener {
     @EventHandler
     public void onPlace(BlockPlaceEvent event){
         Player player = event.getPlayer();
-        Block block = event.getBlockPlaced();
-        Location location = block.getLocation();
         ShulkerRoomFactory shulkerRoomFactory = this.plugin.getShulkerRoomFactory();
         if(shulkerRoomFactory.isPlayerInRoom(player)){
             if(event.getBlockAgainst().getType() != Material.BEDROCK){
                 event.setCancelled(true);
                 return;
             }
-            ShulkerRoom room =  this.plugin.getShulkerRoomFactory().findRoomByUniqueId(player.getUniqueId());
+            ShulkerRoom room =  shulkerRoomFactory.findRoomByUniqueId(player.getUniqueId());
+            Block block = event.getBlock();
             room.addPlacedBlocks(block);
         }
     }
     @EventHandler
     public void onBreak(BlockBreakEvent event){
         Player player = event.getPlayer();
-        Block block = event.getBlock();
-        Location location = block.getLocation();
         ShulkerRoomFactory shulkerRoomFactory = this.plugin.getShulkerRoomFactory();
         if(shulkerRoomFactory.isPlayerInRoom(player)){
-            ShulkerRoom room =  this.plugin.getShulkerRoomFactory().findRoomByUniqueId(player.getUniqueId());
+            ShulkerRoom room =  shulkerRoomFactory.findRoomByUniqueId(player.getUniqueId());
+            Block block = event.getBlock();
             if(!room.getPlacedBlocks().contains(block)){
                 event.setCancelled(true);
                 return;

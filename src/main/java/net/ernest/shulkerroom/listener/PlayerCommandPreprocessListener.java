@@ -28,7 +28,6 @@ public class PlayerCommandPreprocessListener implements Listener {
         if (!player.isOp()) {
             player.sendMessage(ChatHelper.fixColors(Main.getPlugin().getMessageConfiguration().get("command-not-allowed")));
             event.setCancelled(true);
-            return;
         }
     }
 }
