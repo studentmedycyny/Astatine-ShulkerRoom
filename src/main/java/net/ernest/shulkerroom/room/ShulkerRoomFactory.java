@@ -38,7 +38,7 @@ public class ShulkerRoomFactory {
         this.rooms.add(new ShulkerRoom(roomId, location));
         ShulkerRoomConfiguration shulkerRoomConfig = Main.getPlugin().getShulkerRoomConfiguration();
         shulkerRoomConfig.createRoomInConfig(roomId, location);
-        ChatHelper.sendMessage(player, Main.getPlugin().getMessageConfiguration().get("room-created").replace("{ID}", roomId)));
+        ChatHelper.sendMessage(player, Main.getPlugin().getMessageConfiguration().get("room-created").replace("{ID}", roomId));
     }
     public void removeRoom(Player player, String roomId){
         ShulkerRoom room = this.findRoomById(roomId);
@@ -87,6 +87,21 @@ public class ShulkerRoomFactory {
             return;
         }
         ShulkerRoom shulkerRoom = this.rooms.remove(0);
+        shulkerRoom.setOccupiedBy(player.getName());
+        this.occupiedRooms.put(player.getUniqueId(), shulkerRoom);
+        player.teleport(shulkerRoom.getLocation());
+        ChatHelper.sendMessage(player, Main.getPlugin().getMessageConfiguration().get("join-room"));
+        player.sendTitle(
+                ChatHelper.fixColors(Main.getPlugin().getMessageConfiguration().get("join-room-title")),
+                ChatHelper.fixColors(Main.getPlugin().getMessageConfiguration().get("join-room-subtitle"))
+        );
+    }
+    public void claimRoom(Player player, ShulkerRoom shulkerRoom){
+        if(this.rooms.isEmpty()){
+            ChatHelper.sendMessage(player, Main.getPlugin().getMessageConfiguration().get("empty-rooms"));
+            return;
+        }
+        this.rooms.remove(shulkerRoom);
         shulkerRoom.setOccupiedBy(player.getName());
         this.occupiedRooms.put(player.getUniqueId(), shulkerRoom);
         player.teleport(shulkerRoom.getLocation());

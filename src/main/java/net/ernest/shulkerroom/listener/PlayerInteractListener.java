@@ -30,6 +30,7 @@ public class PlayerInteractListener implements Listener {
         if(shulkerRoomFactory.isPlayerInRoom(player)){
             ShulkerRoom room =  shulkerRoomFactory.findRoomByUniqueId(player.getUniqueId());
             Location roomExit = room.getExit();
+            if(roomExit == null) return;
             Location blockLocation = block.getLocation();
             if(roomExit.equals(blockLocation)) {
                 shulkerRoomFactory.unclaimRoom(player);

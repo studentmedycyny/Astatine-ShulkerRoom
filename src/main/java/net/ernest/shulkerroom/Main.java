@@ -3,6 +3,7 @@ package net.ernest.shulkerroom;
 import lombok.Getter;
 import net.ernest.shulkerroom.command.ShulkerRoomCommand;
 import net.ernest.shulkerroom.command.tabcompleter.ShulkerRoomTabCompleter;
+import net.ernest.shulkerroom.configuration.MenuConfiguration;
 import net.ernest.shulkerroom.configuration.MessageConfiguration;
 import net.ernest.shulkerroom.configuration.PluginConfiguration;
 import net.ernest.shulkerroom.configuration.ShulkerRoomConfiguration;
@@ -21,6 +22,7 @@ public class Main extends JavaPlugin {
     @Getter private ShulkerRoomConfiguration shulkerRoomConfiguration;
     @Getter private MessageConfiguration messageConfiguration;
     @Getter private PluginConfiguration pluginConfiguration;
+    @Getter private MenuConfiguration menuConfiguration;
 
     @Override
     public void onEnable() {
@@ -29,6 +31,8 @@ public class Main extends JavaPlugin {
         messageConfiguration.create();
         shulkerRoomConfiguration = new ShulkerRoomConfiguration(this, "rooms.yml");
         shulkerRoomConfiguration.create();
+        menuConfiguration = new MenuConfiguration(this, "menu.yml");
+        menuConfiguration.create();
         pluginConfiguration = new PluginConfiguration(this, "config.yml");
         pluginConfiguration.create();
         shulkerRoomFactory = new ShulkerRoomFactory();

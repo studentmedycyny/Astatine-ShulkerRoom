@@ -1,0 +1,42 @@
+menu:
+  title: "Lista pokoi."
+  structure:
+    - "# # # # # # # # #"
+    - "# . . . . . . . #"
+    - "# . . . . . . . #"
+    - "# # # < # > # # #"
+  content-ingredient: "."
+  ingredients:
+    '#':
+      material: GRAY_STAINED_GLASS_PANE
+      name:
+      lores:
+  page-item:
+    back:
+      ingredient: '<'
+      material: ARROW
+      name: "&7Poprzednia strona."
+      lores:
+        - "&8(&d{PREVIOUS_PAGE}&7/&d{PAGES}&8)"
+        - ""
+    forward:
+      ingredient: '>'
+      material: ARROW
+      name: "&7Nastepna strona."
+      lores:
+        - "&8(&d{NEXT_PAGE}&7/&d{PAGES}&8)"
+        - ""
+  free-room-item:
+    material: GREEN_CONCRETE
+    name: "&7Pokoj: &8{ROOM_ID}"
+    lores:
+      - "&7Zajety: &4❌"
+      - ""
+      - "&aKliknij, aby zajac shulkerroom!"
+  occupied-room-item:
+    material: RED_CONCRETE
+    name: "&7Pokoj: &8{ROOM_ID}"
+    lores:
+      - "&7Zajęty: &2✔"
+      - ""
+      - "&cNie mozesz zajac tego shulkerroom!"

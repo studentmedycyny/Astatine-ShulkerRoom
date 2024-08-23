@@ -4,6 +4,7 @@ import net.md_5.bungee.api.ChatColor;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.CommandSender;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +18,11 @@ public class ChatHelper {
 
     public static List<String> fixColors(List<String> contents) {
         return contents.stream()
+                .map(ChatHelper::fixColors)
+                .collect(Collectors.toList());
+    }
+    public static List<String> fixColors(String... contents) {
+        return Arrays.stream(contents)
                 .map(ChatHelper::fixColors)
                 .collect(Collectors.toList());
     }
